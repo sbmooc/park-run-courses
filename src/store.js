@@ -2,6 +2,7 @@ import axios from "axios";
 import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
+
 const store = new Vuex.Store({
     state: {
         parkRunLocations: {}
@@ -15,11 +16,12 @@ const store = new Vuex.Store({
         collectParkRunLocations(context) {
             return new Promise((resolve, reject) => {
                 axios.get('https://images.parkrun.com/events.json').then(response => {
-                    console.log(response.data['events'].features)
-                    let ukEvents = response.data['events'].features.filter(
+                    let ukSeniorEvents = response.data['events'].features.filter(
                         event => event.properties.countrycode == 97
+                    ).filter(
+                        event => event.properties.seriesid == 1
                     )
-                    context.commit('updateParkRunLocations', ukEvents)
+                    context.commit('updateParkRunLocations', ukSeniorEvents)
                     resolve(response);
                 }, error => {
                     reject(error);

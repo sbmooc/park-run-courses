@@ -11,7 +11,7 @@
         :url="url"
         :attribution="attribution"
       />
-      <l-geo-json v-if="show" :geojson="geojson" :options="options"></l-geo-json>
+      <l-geo-json v-on:click="greet" v-if="show" :geojson="geojson" :options="options"></l-geo-json>
     </l-map>
   </div>
 </template>
@@ -63,10 +63,11 @@ export default {
     };
   },
   methods: {
+    greet(e){
+      this.$root.$emit('selectedParkRunEvent', e)
+    },
     centerUpdate(center){
       this.currentCenter = center
-      console.log(this.currentZoom)
-      console.log(this.currentCenter)
     },
     zoomUpdate(zoom){
       this.currentZoom = zoom
