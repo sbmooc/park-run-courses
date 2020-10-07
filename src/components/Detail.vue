@@ -5,9 +5,11 @@
                {{this.parkRunData.properties.EventLongName}}
            </div>
            <div class="card-body">
-           <Detail-Map v-bind:coordinates="parkRunData.geometry.coordinates" :key="parkRunData"/>
-               This is test data in the body of a card
-               {{this.parkRunData}}
+           <Detail-Map 
+           v-bind:coordinates="parkRunData.geometry.coordinates" 
+           v-bind:track="test"
+           :key="parkRunData.id"/>
+            {{this.parkRunData}}
            </div>
        </div>
        <div v-else class="card shadow mb-4">
@@ -17,6 +19,7 @@
 </template>
 <script>
 import DetailMap from './DetailMap.vue'
+import CPSummerRouteTrack from '../../track.json'
 export default {
     name: 'Detail',
     components:{
@@ -27,7 +30,8 @@ export default {
     data(){
         return {
             parkRunData: {},
-            showDetail: false
+            showDetail: false,
+            test: null
         }
     },
     methods: {
@@ -38,6 +42,9 @@ export default {
     mounted() {
     this.$root.$on('selectedParkRunEvent', event => {
         this.parkRunData = event.sourceTarget.feature 
+        if (this.parkRunData.id == 154){
+            this.test = CPSummerRouteTrack
+        }
         this.toggleDisplay()
     });
 }
