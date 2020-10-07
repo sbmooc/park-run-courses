@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import 'startbootstrap-sb-admin-2/css/sb-admin-2.css'
 import store from './store.js'
 delete L.Icon.Default.prototype._getIconUrl;
 

@@ -1,6 +1,5 @@
-<template>
-
-  <div style="height: 100vh; width: 60%">
+<template class="col-xl-8 col-lg-7">
+  <div class=map>
     <l-map
       :zoom="zoom"
       :center="center"
@@ -82,3 +81,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.map {
+  min-height: 100vh;
+}
+</style>
