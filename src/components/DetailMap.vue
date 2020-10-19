@@ -8,7 +8,7 @@
         :url="url"
         :attribution="attribution"
       />
-      <l-geo-json v-if="track" :geojson="track"></l-geo-json>
+      <l-geo-json v-if="course" :geojson="course.geometry"></l-geo-json>
     </l-map>
    </div> 
 </template>
@@ -27,13 +27,11 @@ export default {
             type: Array,
             required: true
         },
-        track: {
-            type: Object
-        }
     },
     computed: {},
     data() {
         return {
+            course: null,
             zoom: 14,
             center: latLng(this.coordinates[1], this.coordinates[0]),
             url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -43,6 +41,9 @@ export default {
     },
     methods: {},
     mounted() {
+      this.$root.$on("selectedParkRunCourse", (course) => {
+        this.course = course
+      })
     }
 }
 </script>
