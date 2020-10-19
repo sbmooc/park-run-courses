@@ -35,11 +35,11 @@ export default {
     data() {
         return {
             zoom: 14,
-      center: latLng(this.coordinates[1], this.coordinates[0]),
-      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-        }
+            center: latLng(this.coordinates[1], this.coordinates[0]),
+            url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            attribution:
+              '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      }
     },
     methods: {},
     mounted() {
