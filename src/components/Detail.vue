@@ -49,7 +49,6 @@ export default {
       this.courses = null
       if (this.event.id == 154) {
         this.courses = courses.events['154'].features;
-        console.log(this.courses)
       }
       this.showDetail();
     });

@@ -74,7 +74,7 @@ export default {
     }
   },
   created(){
-    this.$store.dispatch('collectParkRunLocations').then(() => {
+    this.$store.dispatch('getParkRunLocations').then(() => {
       this.geojson = this.$store.state.parkRunLocations,
       this.show = true
     }
