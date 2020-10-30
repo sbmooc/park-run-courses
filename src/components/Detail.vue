@@ -12,8 +12,9 @@
         />
       </div>
       <div class="card-body">
-        <SubmitCourse />
+        <SearchStravaSegment />
         <CardList header="Event Courses" v-bind:courses="courses"/> 
+        <SubmitCourse />
       </div>
 
     </div>
@@ -23,12 +24,14 @@
 <script>
 import DetailMap from "./DetailMap.vue";
 import CardList from "./CardList.vue";
+import SearchStravaSegment from "./SearchStravaSegment.vue"
 import SubmitCourse from "./SubmitCourse.vue"
 export default {
   name: "Detail",
   components: {
     DetailMap,
     CardList,
+    SearchStravaSegment,
     SubmitCourse
   },
   computed: {},
