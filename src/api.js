@@ -28,4 +28,18 @@ const getStravaSegment = (context, segmentId) => {
     })
 }
 
-export default {getParkRunLocations, getStravaSegment}
+const postCourse = (context, segmentId, eventId, courseName) => {
+    return new Promise((resolve, reject) => {
+        axios.post(`${SERVER_URL}/courses/`, {
+            segmentId: segmentId,
+            eventId: eventId,
+            courseName: courseName
+        }).then(response => {
+            resolve(response)
+        }).catch(error => {
+            reject(error)
+        })
+    })
+}
+
+export default {getParkRunLocations, getStravaSegment, postCourse}

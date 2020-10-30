@@ -12,9 +12,9 @@
         />
       </div>
       <div class="card-body">
-        <SearchStravaSegment />
+        <SearchStravaSegment v-on:selectedSegmentId="setSelectedSegmentId"/>
+        <SubmitCourse :segmentId="selectedSegmentId" :eventId="event.id" :eventName="event.properties.EventLongName" v-on:killSegmentId="killSelectedSegmentId"/>
         <CardList header="Event Courses" v-bind:courses="courses"/> 
-        <SubmitCourse />
       </div>
 
     </div>
@@ -39,11 +39,17 @@ export default {
     return {
       event: {},
       show: false,
-      test: null,
-      courses: null
+      courses: null,
+      selectedSegmentId: null
     };
   },
   methods: {
+    killSelectedSegmentId(){
+      this.selectedSegmentId = null
+    },
+    setSelectedSegmentId(selectedSegmentId){
+      this.selectedSegmentId = selectedSegmentId
+    },
     showDetail() {
       this.show= true;
     },
@@ -52,6 +58,7 @@ export default {
     const courses = require('../../parkRunCourses.json')
     this.$root.$on("selectedParkRunEvent", (event) => {
       this.event = event.sourceTarget.feature;
+      this.selectedSegmentId = null
       this.courses = null
       if (this.event.id == 154) {
         this.courses = courses.events['154'].features;

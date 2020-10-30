@@ -4,7 +4,7 @@
     <span class="sr-only">Loading...</span>
   </div>
   <div class="alert alert-danger" role="alert" v-if="error">
-    Uh oh - are you sure that is the correct segment ID?
+    {{errorMessage || "Uh oh, something went wrong"}}
   </div>
   </div>
 </template>
@@ -26,6 +26,9 @@ export default {
       type: Boolean,
       required: true,
     },
+    errorMessage: {
+      type: String
+    }
   },
   methods: {},
   mounted() {},

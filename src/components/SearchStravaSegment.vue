@@ -2,7 +2,7 @@
   <div>
     <form @submit="getStravaSegment" @submit.prevent>
       <div class="form-group">
-        <label for="exampleInputEmail1">Add a new course</label>
+        <label for="exampleInputEmail1">Add Strava segment as course</label>
         <input
           type="number"
           class="form-control"
@@ -14,10 +14,12 @@
           >Add a strava segment id here, e.g 956701</small
         >
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div>
+      <button type="submit" class="btn btn-primary">Show segment</button>
+      <Notification :message="message"/>
+      <LoadingError v-bind:error="error" v-bind:loading="loading" />
+      </div>
     </form>
-    <LoadingError v-bind:error="error" v-bind:loading="loading" />
-    <Notification v-bind:message="message"/>
   </div>
 </template>
 <script>
@@ -30,7 +32,7 @@ export default {
       segmentId: null,
       loading: false,
       error: false,
-      message: null
+      message: "" 
     };
   },
   components: {
@@ -40,7 +42,7 @@ export default {
   computed: {},
   props: {},
   methods: {
-    emitCourseJson(course) {
+    emitCourseGeoJson(course) {
       this.$root.$emit("selectedParkRunCourse", course);
     },
     showCourse(latLng) {
@@ -55,18 +57,20 @@ export default {
               coordinates: lngLat,
             },
           }
-      this.emitCourseJson(course)
+      this.emitCourseGeoJson(course)
       this.$root.$emit("centreDetailMap", latLng[0])
     },
     getStravaSegment() {
-      this.error = this.message = false;
+      this.error = false;
+      this.message = ""
       this.loading = true;
       this.$store
         .dispatch("getStravaSegment", this.segmentId)
         .then((response) => {
           this.loading = false;
-          this.showCourse(response.data);
           this.message = 'Segment found OK'
+          this.showCourse(response.data);
+          this.$emit('selectedSegmentId', this.segmentId)
         })
         .catch(() => {
           this.loading = false;
