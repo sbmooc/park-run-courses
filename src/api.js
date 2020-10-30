@@ -16,4 +16,15 @@ const getParkRunLocations = (context) => {
     })
 }
 
-export default {getParkRunLocations}
+const getStravaSegment = (context, segmentId) => {
+    return new Promise((resolve, reject) => {
+        axios.get(`https://www.strava.com/stream/segments/${segmentId}`).then(response => {
+            console.log(response)
+            resolve(response)
+        }).catch(error => {
+            reject(error)
+        })
+    })
+}
+
+export default {getParkRunLocations, getStravaSegment}
