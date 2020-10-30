@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <form @submit="getStravaSegment" @submit.prevent>
       <div class="form-group">
         <label for="exampleInputEmail1">Add a new course</label>
@@ -15,23 +15,24 @@
         >
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
-      <div class="spinner-border" role="status" v-if='loading'>
-        <span class="sr-only">Loading...</span>
-      </div>
     </form>
+      <LoadingError v-bind:error="error" v-bind:loading="loading"/>
   </div>
 </template>
 <script>
+import LoadingError from './LoadingError.vue'
 export default {
   name: "SubmitCourse",
   data() {
     return {
       segmentId: null,
       loading: false,
-      error: true 
+      error: false 
     };
   },
-  components: {},
+  components: {
+      LoadingError
+  },
   computed: {},
   props: {},
   methods: {
