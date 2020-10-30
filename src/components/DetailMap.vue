@@ -2,7 +2,7 @@
    <div class='map'>
     <l-map
       :zoom="zoom"
-      :center="center"
+      v-bind:center="center"
     >
       <l-tile-layer
         :url="url"
@@ -43,6 +43,9 @@ export default {
     mounted() {
       this.$root.$on("selectedParkRunCourse", (course) => {
         this.course = course
+      })
+      this.$root.$on('centreDetailMap', coordinates => {
+        this.center = latLng(coordinates)
       })
     }
 }

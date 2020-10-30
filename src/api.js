@@ -21,7 +21,6 @@ const getParkRunLocations = (context) => {
 const getStravaSegment = (context, segmentId) => {
     return new Promise((resolve, reject) => {
         axios.post(`${SERVER_URL}/segments/${segmentId}`).then(response => {
-            console.log(response)
             resolve(response)
         }).catch(error => {
             reject(error)
