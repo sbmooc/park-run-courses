@@ -12,9 +12,8 @@
         />
       </div>
       <div class="card-body">
-        <SearchStravaSegment v-on:selectedSegmentId="setSelectedSegmentId"/>
-        <SubmitCourse :segmentId="selectedSegmentId" :eventId="event.id" :eventName="event.properties.EventLongName" v-on:killSegmentId="killSelectedSegmentId"/>
-        <CardList header="Event Courses" v-bind:courses="courses"/> 
+        <CourseList :courses="courses"/> 
+        <AddNewCourse :event="event"/>
       </div>
 
     </div>
@@ -23,16 +22,14 @@
 </template>
 <script>
 import DetailMap from "./DetailMap.vue";
-import CardList from "./CardList.vue";
-import SearchStravaSegment from "./SearchStravaSegment.vue"
-import SubmitCourse from "./SubmitCourse.vue"
+import CourseList from "./CourseList.vue";
+import AddNewCourse from "./AddNewCourse.vue"
 export default {
   name: "Detail",
   components: {
+    AddNewCourse,
     DetailMap,
-    CardList,
-    SearchStravaSegment,
-    SubmitCourse
+    CourseList,
   },
   computed: {},
   data() {

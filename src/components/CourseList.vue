@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 v-if="courses">{{ header }}</h4>
+    <h4 v-if="courses">Courses</h4>
     <ul
       v-for="course in courses"
       :key="course.id"
