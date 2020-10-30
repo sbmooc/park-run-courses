@@ -12,6 +12,7 @@
         />
       </div>
       <div class="card-body">
+        <SubmitCourse />
         <CardList header="Event Courses" v-bind:courses="courses"/> 
       </div>
 
@@ -22,11 +23,13 @@
 <script>
 import DetailMap from "./DetailMap.vue";
 import CardList from "./CardList.vue";
+import SubmitCourse from "./SubmitCourse.vue"
 export default {
   name: "Detail",
   components: {
     DetailMap,
-    CardList 
+    CardList,
+    SubmitCourse
   },
   computed: {},
   data() {

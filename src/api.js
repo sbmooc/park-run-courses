@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const SERVER_URL = 'http://localhost:3000'
+
 const getParkRunLocations = (context) => {
     return new Promise((resolve, reject) => {
         axios.get('https://images.parkrun.com/events.json').then(response => {
@@ -18,7 +20,7 @@ const getParkRunLocations = (context) => {
 
 const getStravaSegment = (context, segmentId) => {
     return new Promise((resolve, reject) => {
-        axios.get(`https://www.strava.com/stream/segments/${segmentId}`).then(response => {
+        axios.post(`${SERVER_URL}/segments/${segmentId}`).then(response => {
             console.log(response)
             resolve(response)
         }).catch(error => {
