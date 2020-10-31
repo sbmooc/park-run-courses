@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import apiCalls from './api.js'
+import api from './api.js'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -12,7 +12,7 @@ const store = new Vuex.Store({
             state.parkRunLocations = payload
         }
     },
-    actions: {...apiCalls},
+    actions: {...api},
     
 });
 

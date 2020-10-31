@@ -1,6 +1,7 @@
 <template>
   <div>
     <h4 v-if="courses">Courses</h4>
+    <h5 v-else>No courses submitted yet</h5>
     <ul
       v-for="course in courses"
       :key="course.id"
@@ -18,6 +19,9 @@ export default {
   components: {},
   computed: {},
   props: {
+    eventName: {
+      type: String
+    },
     courses: {
       type: Array,
     },

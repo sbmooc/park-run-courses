@@ -57,7 +57,10 @@ export default {
               this.errorMessage = "You must add a course name"
               return
           }
-          this.$store.dispatch('postCourse', this.segmentId, this.eventId, this.courseName).then(response => {
+          this.$store.dispatch('postCourse', {
+              segmentId: this.segmentId, 
+              eventId: this.eventId, 
+              courseName: this.courseName}).then(response => {
               if (response.status == 201){
                   console.log('all ok')
               }

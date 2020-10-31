@@ -12,7 +12,7 @@
         />
       </div>
       <div class="card-body">
-        <CourseList :courses="courses"/> 
+        <CourseList :courses="courses" :eventName="event.properties.EventLongName"/> 
         <AddNewCourse :event="event"/>
       </div>
 
@@ -52,16 +52,11 @@ export default {
     },
   },
   mounted() {
-    const courses = require('../../parkRunCourses.json')
     this.$root.$on("selectedParkRunEvent", (event) => {
       this.event = event.sourceTarget.feature;
       this.selectedSegmentId = null
-      this.courses = null
-      if (this.event.id == 154) {
-        this.courses = courses.events['154'].features;
-      }
       this.showDetail();
-    });
-  },
+    })
+},
 };
 </script>
