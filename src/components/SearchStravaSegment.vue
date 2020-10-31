@@ -2,7 +2,6 @@
   <div>
     <form @submit="getStravaSegment" @submit.prevent>
       <div class="form-group">
-        <label for="exampleInputEmail1">Add Strava segment as course</label>
         <input
           type="number"
           class="form-control"
@@ -89,5 +88,8 @@ input::-webkit-inner-spin-button {
 }
 input[type="number"] {
   -moz-appearance: textfield;
+}
+input {
+  width: 50%
 }
 </style>

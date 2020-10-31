@@ -1,7 +1,8 @@
 <template>
   <div>
     <button v-if="!unfurl" v-on:click="toggleUnfurl" class="btn btn-primary">Add New Course</button>
-    <div v-if="unfurl">
+    <div v-if="unfurl" class='unfurlSection'>
+      <i v-on:click="toggleUnfurl" class="fas fa-times closeButton"></i>
       <SearchStravaSegment v-on:selectedSegmentId="setSelectedSegmentId" />
       <SubmitCourse
         :segmentId="selectedSegmentId"
@@ -36,7 +37,7 @@ export default {
   },
   methods: {
     toggleUnfurl(){
-      this.unfurl = true
+      this.unfurl = !this.unfurl
     },
     killSelectedSegmentId() {
       this.selectedSegmentId = null;
@@ -52,3 +53,14 @@ export default {
   }
 };
 </script>
+<style scoped>
+.closeButton {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer
+}
+.unfurlSection {
+    position: relative
+}
+</style>
