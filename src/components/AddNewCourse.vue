@@ -47,6 +47,7 @@ export default {
       this.selectedSegmentId = selectedSegmentId;
     },
     newCourseAdded(){
+      this.toggleUnfurl()
       this.$emit('newCourseAdded')
     }
   },
