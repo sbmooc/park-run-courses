@@ -62,7 +62,12 @@ export default {
               eventId: this.eventId, 
               courseName: this.courseName}).then(response => {
               if (response.status == 201){
-                  console.log('all ok')
+                this.$emit('newCourseAdded')
+              }
+              else {
+              this.error = true
+              this.errorMessage = "Oh no, something went wrong"
+                return
               }
           })
       }

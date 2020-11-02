@@ -8,7 +8,7 @@
         :url="url"
         :attribution="attribution"
       />
-      <l-geo-json v-if="course" :geojson="course.geometry"></l-geo-json>
+      <l-geo-json v-if="course" v-bind:geojson="course"></l-geo-json>
     </l-map>
    </div> 
 </template>
@@ -42,6 +42,7 @@ export default {
     methods: {},
     mounted() {
       this.$root.$on("selectedParkRunCourse", (course) => {
+        console.log('yo')
         this.course = course
       })
       this.$root.$on('centreDetailMap', coordinates => {

@@ -2,18 +2,18 @@
   <div>
     <div v-if="show" class="card shadow mb-4">
       <div class="card-header py-3">
-        {{ this.event.properties.EventLongName }}
+        {{ this.event.properties.name}}
       </div>
       <div class="card-img-top">
         <Detail-Map
           v-bind:coordinates="event.geometry.coordinates"
           v-bind:courses="courses"
-          :key="event.id"
+          :key="event.properties.id"
         />
       </div>
       <div class="card-body">
-        <CourseList :courses="courses" :eventName="event.properties.EventLongName"/> 
-        <AddNewCourse :event="event"/>
+        <CourseList v-bind:courses="courses" :eventName="event.properties.name"/> 
+        <AddNewCourse v-on:newCourseAdded="getCourses" :event="event"/>
       </div>
 
     </div>
@@ -50,11 +50,17 @@ export default {
     showDetail() {
       this.show= true;
     },
+    getCourses(){
+      this.$store.dispatch('getCourses', this.event.properties.id).then(response => {
+        this.courses = response.data.features
+      })
+    }
   },
   mounted() {
     this.$root.$on("selectedParkRunEvent", (event) => {
       this.event = event.sourceTarget.feature;
       this.selectedSegmentId = null
+      this.getCourses()
       this.showDetail();
     })
 },

@@ -6,9 +6,10 @@
       <SearchStravaSegment v-on:selectedSegmentId="setSelectedSegmentId" />
       <SubmitCourse
         :segmentId="selectedSegmentId"
-        :eventId="event.id"
-        :eventName="event.properties.EventLongName"
+        :eventId="event.properties.id"
+        :eventName="event.properties.name"
         v-on:killSegmentId="killSelectedSegmentId"
+        v-on:newCourseAdded="newCourseAdded"
       />
     </div>
   </div>
@@ -45,6 +46,9 @@ export default {
     setSelectedSegmentId(selectedSegmentId) {
       this.selectedSegmentId = selectedSegmentId;
     },
+    newCourseAdded(){
+      this.$emit('newCourseAdded')
+    }
   },
   mounted() {
     this.$root.$on("selectedParkRunEvent", () => {

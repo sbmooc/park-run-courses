@@ -35,7 +35,7 @@ export default {
     },
     onEachFeatureFnc() {
       return (feature, layer) => {
-        const eventName = feature.properties.EventLocation || feature.propertiesEventShortName
+        const eventName = feature.properties.name
         layer.bindTooltip(
           "<div>" +
             eventName +

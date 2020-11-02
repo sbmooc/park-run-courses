@@ -7,8 +7,9 @@
       :key="course.id"
       class="list-group list-group-flush"
     >
-      <li @click="emitCourseGeoJson(course)" class="list-group-item">
+      <li class="list-group-item">
         {{ course.properties.name }}
+        <i @click="emitCourseGeoJson(course)" class="fas fa-eye"></i>
       </li>
     </ul>
   </div>
