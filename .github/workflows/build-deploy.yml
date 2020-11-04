@@ -1,5 +1,8 @@
 name: Build and deploy
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   deploy_job:
@@ -20,6 +23,6 @@ jobs:
           username: "root"
           host: ${{ secrets.SERVER_IP }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "test_file"
+          source: "dist/*"
           target: "/var/www/park-run-courses"
           rm: "true"
