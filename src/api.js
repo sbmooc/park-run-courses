@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SERVER_URL = 'http://localhost:3000'
+const SERVER_URL = process.env.VUE_APP_PR_SERVER_URL || 'http://localhost:3000'
 
 const getParkRunLocations = (context) => {
     return new Promise((resolve, reject) => {
