@@ -22,6 +22,7 @@ jobs:
           username: "root"
           host: ${{ secrets.SERVER_IP }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "dist/*"
+          source: "dist/."
           target: "/var/www/park-run-courses/"
           rm: "true"
+          strip_components: 1
