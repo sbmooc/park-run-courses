@@ -17,6 +17,7 @@ jobs:
       - name: copy file via ssh password
         uses: appleboy/scp-action@master
         with:
+          username: "root"
           host: ${{ secrets.SERVER_IP }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "dist"
