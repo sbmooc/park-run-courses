@@ -15,7 +15,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build
-        run: PR_SERVER_URL=http://165.232.44.57/api npx vue-cli-service build --mode production
+        run: PR_SERVER_URL=https://park-run.olimc.co.uk/api npx vue-cli-service build --mode production
       - name: copy file via ssh password
         uses: appleboy/scp-action@master
         with:
